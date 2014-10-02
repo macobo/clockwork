@@ -63,7 +63,7 @@ module Clockwork
       # 3, this would set @last as 6, but at 10 it would be 9
       if @last_from && @last.nil?
         raise ArgumentError.new(':last_from was greater than the current time') if @last_from >= t
-        @last = (t - @last_from) / @period * period
+        @last = (t - @last_from) / @period * @period
       end
       @last.nil? || (t - @last).to_i >= @period
     end
