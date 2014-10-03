@@ -62,8 +62,8 @@ module Clockwork
       # Calculate a good start time. For example, if at time 7-9 with period
       # 3, this would set @last as 6, but at 10 it would be 9
       if @last_from && @last.nil?
-        raise ArgumentError.new(':last_from was greater than the current time') if @last_from >= t
-        @last = (t - @last_from) / @period * @period
+        raise ArgumentError.new(':last_from was greater than the current time') if @last_from >= t.to_i
+        @last = (t.to_i - @last_from) / @period * @period
       end
       @last.nil? || (t - @last).to_i >= @period
     end
